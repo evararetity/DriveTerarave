@@ -24,6 +24,7 @@ var app = {
     
         window.plugins.OneSignal
             .startInit("e8f76cf0-88f2-4765-99c4-6b292c180cbb")
+            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
         
