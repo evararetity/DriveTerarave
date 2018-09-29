@@ -19,7 +19,7 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-            navigator.notification.alert(JSON.stringify(jsonData))
+            navigator.notification.alert("this are data" + JSON.stringify(jsonData))
         };
     
         window.plugins.OneSignal
