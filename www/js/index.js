@@ -18,9 +18,9 @@ var app = {
         app.receivedEvent('deviceready');
 
         var notificationOpenedCallback = function(jsonData) {
-            // alert("Notification opened:\n" + JSON.stringify(jsonData))
+            alert("Notification opened:\n" + JSON.stringify(jsonData))
             $("#notif-line").append('<div><p>'+jsonData.instruction+'</p><button onclick="driverInit()">Pick up</button></div>')
-            alert("This is the notif:" + jsonData.instruction + "\n Transaction ID: "+ jsonData.transactionID)
+            // alert("This is the notif:" + jsonData.instruction + "\n Transaction ID: "+ jsonData.transactionID)
         };
     
         window.plugins.OneSignal
