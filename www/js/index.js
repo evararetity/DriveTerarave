@@ -19,7 +19,7 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
-            $("#notif-line").append('<div><p>'+jsonData.notification.payload.body+'</p><button onclick="driverInit()">Pick up</button></div>')
+            $("#notif-line").append('<div><p style="text-align: center;"><i>'+jsonData.notification.payload.body+'</i></p><button onclick="driverInit()">Pick up</button></div>')
             alert("This is the notif:" + jsonData.notification.payload.body + "\n Transaction ID: "+ jsonData.notification.payload.additionalData.transactionID)
         };
     
