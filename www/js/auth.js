@@ -130,7 +130,3 @@ function logout(){
 function doNothing(){
     return false
 }
-
-function goTrack(){
-    $.mobile.navigate("#track-page");
-}

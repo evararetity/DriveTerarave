@@ -71,6 +71,7 @@
                     <h2 style="text-align: center;">Notification</h2>
                     <hr id="notif-line" />
                     <!-- <button onclick="goTrack()">Set Out </button> -->
+                    <p id="err" style='text-align:center;color: red;'></p>
                 </div>
 
             </div>
@@ -81,8 +82,9 @@
                 </div>
     
                 <div data-role="main" id="main">
-                    <h3 id="check">You are being tracked, just to know</h3>
+                    <h3 id="track-report">You are being tracked, just to know</h3>
                     <h3>Your Driver's Id is <span style="color:#fac312;">D-<i id="driveId"></i></span></h3>
+                    <button onclick="delivered()">Delivered</button>
                     <div id="geolocation"></div>
                     <div class="event received" id="map" style="height: 500px; width: 100;"></div>
                 </div>

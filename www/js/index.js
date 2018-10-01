@@ -78,3 +78,34 @@ function driverInit(){
         }
     })
 }
+
+function goTrack(){
+    $.mobile.loading("show");
+    $.ajax({
+        type: "post",
+        url: "http://teraraveweb.herokuapp.com/mobile/pickedUp",
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        },
+        data: {
+            TransactionID: localStorage.getItem("TransactionID"),
+        },
+        success: function(data) {
+            if (data.status == true) {
+
+                $.mobile.loading("hide");
+                $.mobile.navigate("#track-page");
+
+            } else if (data.status == false) {
+
+                $.mobile.loading("hide");
+                $("#err").text(data.message)
+
+            }
+        },
+        error: function(error){
+            $.mobile.loading("hide");
+            $("#err").text("Error occur somehow while trying to set out")
+        }
+    })
+}
