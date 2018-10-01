@@ -19,6 +19,7 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
+            localStorage.setItem("TransactionID", jsonData.notification.payload.additionalData.transactionID)
             $("#notif-line").append('<div id="notif-box"><p style="text-align: center;"><i>'+jsonData.notification.payload.body+'</i></p><button onclick="driverInit()">Pick up</button></div>')
             // alert("This is the notif:" + jsonData.notification.payload.body + "\n Transaction ID: "+ jsonData.notification.payload.additionalData.transactionID)
         };
@@ -54,7 +55,7 @@ function driverInit(){
         },
         data: {
             TransactionID: localStorage.getItem("TransactionID"),
-            DriverID: localStorage.getItem("DriverID"),
+            DriverID: localStorage.getItem("id"),
         },
         success: function(data) {
             if (data.status == true) {
