@@ -7,7 +7,6 @@ function login(){
 }
 
 function authDriver(){
-    // navigator.notification.alert("reached auth")
     $.ajax({
         type: "post",
         url: "http://teraraveweb.herokuapp.com/mobile/login",

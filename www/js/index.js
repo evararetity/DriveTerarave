@@ -19,8 +19,8 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
-            $("#notif-line").append('<div><p style="text-align: center;"><i>'+jsonData.notification.payload.body+'</i></p><button onclick="driverInit()">Pick up</button></div>')
-            alert("This is the notif:" + jsonData.notification.payload.body + "\n Transaction ID: "+ jsonData.notification.payload.additionalData.transactionID)
+            $("#notif-line").append('<div id="notif-box"><p style="text-align: center;"><i>'+jsonData.notification.payload.body+'</i></p><button onclick="driverInit()">Pick up</button></div>')
+            // alert("This is the notif:" + jsonData.notification.payload.body + "\n Transaction ID: "+ jsonData.notification.payload.additionalData.transactionID)
         };
     
         window.plugins.OneSignal
@@ -44,3 +44,36 @@ var app = {
 };
 
 
+function driverInit(){
+    $.mobile.loading("show");
+    $.ajax({
+        type: "post",
+        url: "http://teraraveweb.herokuapp.com/mobile/driverInit",
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        },
+        data: {
+            TransactionID: localStorage.getItem("TransactionID"),
+            DriverID: localStorage.getItem("DriverID"),
+        },
+        success: function(data) {
+            if (data.status == true) {
+
+                $.mobile.loading("hide");
+                $("#notif-box").empty()
+                $("#notif-box").html('<p style="text-align: center; color: green;><i>'+data.message+'</i></p><p style="text-align: center;><i>Please click the set out button when you have picked item from the shop.</i></p><button onclick="goTrack()">Set Out </button>')
+
+            } else if (data.status == false) {
+
+                $.mobile.loading("hide");
+                $("#notif-box").empty()
+                $("#notif-box").html("<h5 style='text-align:center;color: red;'>" + data.message + " </h5>")
+
+            }
+        },
+        error: function(error){
+            $.mobile.loading("hide");
+            $("#notif-box").prepend("<h5 style='text-align:center;color: red;'>" + "Error while picking up item, please try again" + " </h5>")
+        }
+    })
+}
