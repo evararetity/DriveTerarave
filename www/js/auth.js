@@ -87,6 +87,7 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
         switch (ui.toPage.prop("id")) {
             case "main-page":
                 $("#fullname").text(fullname);
+                $("#fullname1").text(fullname);
                 $("#id").text(id);
                 break;
             case "track-page":
