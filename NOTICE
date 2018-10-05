@@ -35,3 +35,5 @@ pgb update 3299777 C:\Workspace\mobile\TeraRave
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
+
+    

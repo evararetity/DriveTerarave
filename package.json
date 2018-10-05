@@ -23,7 +23,8 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-splashscreen": {},
-      "phonegap-plugin-push": {}
+      "phonegap-plugin-push": {},
+      "cordova-plugin-statusbar": {}
     }
   },
   "dependencies": {

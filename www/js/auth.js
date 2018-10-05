@@ -48,9 +48,11 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
     if (typeof ui.toPage !== "object") return;
     switch (ui.toPage.attr("id")) {
         case "login-page":
+        console.log("we are going to login page")
             var token = localStorage.getItem("token")
 
             if (!ui.prevPage && token) {            // Check for token and redirect to main page.
+                console.log("there is token and we are just entering")
                 ui.toPage = $("#main-page");  
 
                 $.extend( ui.options, {
