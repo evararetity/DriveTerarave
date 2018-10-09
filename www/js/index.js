@@ -19,9 +19,10 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
-            localStorage.setItem("TransactionID", jsonData.notification.payload.additionalData.transactionID)
-            $("#notif-line").append('<div id="notif-box"><p style="text-align: center;"><i>'+jsonData.notification.payload.body+'</i></p><button onclick="driverInit()">Pick up</button></div>')
+            // localStorage.setItem("TransactionID", jsonData.notification.payload.additionalData.transactionID)
+            $("#notif-text").text(jsonData.notification.payload.body)
             // alert("This is the notif:" + jsonData.notification.payload.body + "\n Transaction ID: "+ jsonData.notification.payload.additionalData.transactionID)
+            $("#job-alert-modal").modal('show');
         };
     
         window.plugins.OneSignal
