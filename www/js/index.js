@@ -21,7 +21,7 @@ var app = {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
             // localStorage.setItem("TransactionID", jsonData.notification.payload.additionalData.transactionID)
             $("#notif-text").text(jsonData.notification.payload.body)
-            // alert("This is the notif:" + jsonData.notification.payload.body + "\n Transaction ID: "+ jsonData.notification.payload.additionalData.transactionID)
+            $("#notif-ID").text(jsonData.notification.payload.additionalData.transactionID)
             $("#job-alert-modal").modal('show');
         };
     
@@ -55,13 +55,14 @@ function driverInit(){
             "x-access-token": localStorage.getItem("token")
         },
         data: {
-            TransactionID: localStorage.getItem("TransactionID"),
+            TransactionID: $("#notif-ID").text(),
             DriverID: localStorage.getItem("id"),
         },
         success: function(data) {
             if (data.status == true) {
 
                 $.mobile.loading("hide");
+                $("#job-alert-modal").modal('hide');
                 $("#notif-box").empty()
                 $("#notif-box").html('<p style="text-align: center; color: green;><i>'+data.message+'</i></p><p style="text-align: center;><i>Please click the set out button when you have picked item from the shop.</i></p><button onclick="goTrack()">Set Out </button>')
 
@@ -126,18 +127,17 @@ function jobStatus(status){
             if (data.status == true) {
 
                 $.mobile.loading("hide");
-                $("#jobStatus").text(data.message)
+                $("#statusMsg").text(data.message)
 
             } else if (data.status == false) {
 
                 $.mobile.loading("hide");
                 $("#err").text(data.message)
-
             }
         },
         error: function(error){
             $.mobile.loading("hide");
-            $("#err").text("Error occur somehow while trying to set out")
+            $("#err").text("Error occur connecting to server")
         }
     })
 }

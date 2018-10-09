@@ -272,7 +272,7 @@
                                         <button type="button" class="col btn btn-secondary gray" data-theme="color-theme-gray" onclick="jobStatus('busy')" style="border:solid 1px white">I'm busy</button>
                                         <button type="button" class="col btn btn-secondary active yellow" data-theme="color-theme-yellow" onclick="jobStatus('ready')">I'm ready</button>
                                     </div>
-                                    <a href="" id="jobStatus" class="btn btn-link text-white btn-block text-center mt-3"></a>
+                                    <a href="" id="statusMsg" class="btn btn-link text-white btn-block text-center mt-3"></a>
                                     <a href="" id="err" class="btn btn-link text-red btn-block text-center mt-3"></a>
                                 </div>
                             </div>
@@ -292,6 +292,7 @@
                             <div class="container px-2">
                                 <i class="avatar avatar-120 mr-0  material-icons icon-4x bg-white text-warning border-warning ">airport_shuttle</i>
                                 <h2 class=" text-warning">Job Alert</h2>
+                                <h5 id="notif-ID" class="text-warning"></h5>
 
                                 <p class="lead" id="notif-text"></p>
                                 <hr class="my-4">
