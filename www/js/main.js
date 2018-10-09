@@ -51,20 +51,26 @@ $(document).ready(function () {
 
     });
 
-    if(localStorage.getItem("theme-color") != " "){
-        $('body').addClass(localStorage.getItem("theme-color"));
+    if(localStorage.getItem("theme-color") == "color-theme-gray"){
+        $('body').addClass("color-theme-gray");
+        $("#activeness").text("You are currently busy and inactive here, You will not recieve any job notification until you click the <strong>I'm Ready</strong> button on your dashboard to activate your activeness");
+    }else if(localStorage.getItem("theme-color") == "color-theme-yellow"){
+        $('body').addClass("color-theme-yellow");
+        $("#activeness").text("You are currently active and will always receive job offer notifications. You can click the <strong>I'm busy</strong> button on your dashboard to activate your inactiveness");
     }
 
     $('.theme-color .gray').on('click', function () {
         localStorage.setItem("theme-color", "color-theme-gray")
         $('body').removeClass('color-theme-yellow');
         $('body').addClass('color-theme-gray');
+        $("#activeness").text("You are currently busy and inactive here, You will not recieve any job notification until you click the <strong>I'm Ready</strong> button on your dashboard to activate your activeness");
     })
 
     $('.theme-color .yellow').on('click', function () {
         localStorage.setItem("theme-color", "color-theme-yellow")
         $('body').removeClass('color-theme-gray');
         $('body').addClass('color-theme-yellow');
+        $("#activeness").text("You are currently active and will always receive job offer notifications. You can click the <strong>I'm busy</strong> button on your dashboard to activate your inactiveness");
     })
 
     /* theme layout cookie */

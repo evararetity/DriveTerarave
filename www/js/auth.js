@@ -24,6 +24,11 @@ function authDriver(){
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("fullname", data.fullname);
                 localStorage.setItem("id", data.id);
+                localStorage.setItem("vehicleName", data.vehicleName);
+                localStorage.setItem("vehicleModel", data.vehicleModel);
+                localStorage.setItem("vehicleType", data.vehicleType);
+                localStorage.setItem("numberPlate", data.numberPlate);
+                localStorage.setItem("regNumber", data.regNumber);
                 $.mobile.navigate("#main-page");
 
             } else if (data.status == false) {
@@ -81,17 +86,28 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
 
 $(document).on("pagecontainerbeforeshow", function (event, ui) {
     if (typeof ui.toPage == "object") {
-        var fullname = localStorage.getItem("fullname"),
-            id = localStorage.getItem("id");
+        var params = {
+            fullname : localStorage.getItem("fullname"),
+            id : localStorage.getItem("id"),
+            vehicleName : localStorage.getItem("vehicleName"),
+            vehicleModel : localStorage.getItem("vehicleModel"),
+            vehicleType : localStorage.getItem("vehicleType"),
+            numberPlate : localStorage.getItem("numberPlate"),
+            regNumber : localStorage.getItem("regNumber"),
+        }
 
         switch (ui.toPage.prop("id")) {
             case "main-page":
-                $("#fullname").text(fullname);
-                $("#fullname1").text(fullname);
-                $("#id").text(id);
+                $(".fullname").text(params.fullname);
+                $("#id").text(params.id);
+                $("#vehicleName").text(params.vehicleName);
+                $("#vehicleModel").text(params.vehicleModel);
+                $("#vehicleType").text(params.vehicleType);
+                $("#numberPlate").text(params.numberPlate);
+                $("#regNumber").text(params.regNumber);
                 break;
             case "track-page":
-                $("#driveId").text(id);
+                $("#driveId").text(params.id);
                 break;
             default:
                 break;

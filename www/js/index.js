@@ -109,3 +109,34 @@ function goTrack(){
         }
     })
 }
+
+function jobStatus(status){
+    $.mobile.loading("show");
+    $.ajax({
+        type: "post",
+        url: "http://teraraveweb.herokuapp.com/mobile/job/"+status,
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        },
+        data: {
+            ID: localStorage.getItem("id"),
+        },
+        success: function(data) {
+            if (data.status == true) {
+
+                $.mobile.loading("hide");
+                $("#jobStatus").text(data.message)
+
+            } else if (data.status == false) {
+
+                $.mobile.loading("hide");
+                $("#err").text(data.message)
+
+            }
+        },
+        error: function(error){
+            $.mobile.loading("hide");
+            $("#err").text("Error occur somehow while trying to set out")
+        }
+    })
+}

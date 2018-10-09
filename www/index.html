@@ -128,16 +128,20 @@
                                         <img src="img/user1.png" alt="user image">
                                     </figure>
                                     <div class="media-body">
-                                        <h4 class="mt-0 text-white" id="fullname"></h4>
+                                        <h4 class="mt-0 text-white fullname"></h4>
                                         <p class="text-white"> D-<span id="id"></span></p>
-                                        <h5 class="text-warning my-2">
+                                        <h5 class="text-success my-2">
 											<i class="material-icons">star</i>
 											<i class="material-icons">star</i>
 											<i class="material-icons">star</i>
 											<i class="material-icons">star</i>
 											
 										</h5>
-                                        <div class="mb-0">There will be a fucking description of the driver and his vehicle here, not to over kill, this is the minimal thing we want to have.</div>
+                                        <div class="mb-0">
+                                            You drive a <span id="vehicleName"> Nissan </span> <span id="vehicleModel"> R250 </span> <span id="vehicleType"> Truck </span> with the Plate Number <span id="numberPlate"> XYJ-987-TR </span> and Registration Number <span id="regNumber">FRSC-657863</span>.
+                                            
+                                            <p id="activeness"></p>
+                                        </div>
                                         <br>
                                     </div>
                                 </div>
@@ -165,7 +169,7 @@
                                 <img src="img/user1.png" alt="">
                             </figure>
                             <div class="media-content">
-                                <h6><span id="fullname"></span><br><small>Truck</small></h6>
+                                <h6><span class="fullname"></span><br><small>Truck</small></h6>
                             </div>
                         </a>
                         <br>
@@ -174,23 +178,23 @@
                                 <div class="menulist">
                                     <ul>
                                         <li>
-                                            <a href="index.html" class="popup-close">
+                                            <a href="#main-page" class="popup-close">
                                                 <div class="item-title">
                                                     <i class="icon material-icons md-only">poll</i> Dashboard
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="projects.html" class="popup-close">
+                                            <a href="" class="popup-close">
                                                 <div class="item-title">
-                                                    <i class="icon material-icons md-only">add_shopping_cart</i> Jobs
+                                                    <i class="icon material-icons md-only">add_shopping_cart</i> Job Offers
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="project-detail.html" class="popup-close">
+                                            <a href="" class="popup-close">
                                                 <div class="item-title">
-                                                    <i class="icon material-icons md-only">filter_none</i> On-Jobs
+                                                    <i class="icon material-icons md-only">filter_none</i> On-Job
                                                 </div>
                                             </a>
                                         </li>
@@ -201,7 +205,7 @@
                         <br>
                         <div class="row mx-0">
                             <div class="col">
-                                <a href="login.html" class="rounded btn btn-outline-white text-white popup-close">Logout</a>
+                                <a onclick="logout()" id="logout" class="rounded btn btn-outline-white text-white popup-close">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -234,7 +238,7 @@
                     <div class="background bg-170"><img src="img/background.png" alt=""></div>
                     <div class="w-100">
                         
-                        <h1 class="text-center text-white title-background"><small>Welcome,<br></small><span id="fullname1"></span></h1>
+                        <h1 class="text-center text-white title-background"><small>Welcome,<br></small><span class="fullname"></span></h1>
 
                         <div>
                             <div class="swiper-container swiper-init swipermultiple">
@@ -266,9 +270,11 @@
                             <div class="row mx-0">
                                 <div class="col theme-color">
                                     <div class="btn-group w-100" role="group" aria-label="Basic example">
-                                        <button type="button" class="col btn btn-secondary gray" data-theme="color-theme-gray">I'm busy</button>
-                                        <button type="button" class="col btn btn-secondary active yellow" data-theme="color-theme-yellow">I'm ready</button>
+                                        <button type="button" class="col btn btn-secondary gray" data-theme="color-theme-gray" onclick="jobStatus('busy')">I'm busy</button>
+                                        <button type="button" class="col btn btn-secondary active yellow" data-theme="color-theme-yellow" onclick="jobStatus('ready')">I'm ready</button>
                                     </div>
+                                    <a href="" id="jobStatus" class="btn btn-link text-white btn-block text-center mt-3"></a>
+                                    <a href="" id="err" class="btn btn-link text-red btn-block text-center mt-3"></a>
                                 </div>
                             </div>
 
