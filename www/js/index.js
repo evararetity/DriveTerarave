@@ -30,7 +30,11 @@ var app = {
             $("#custPhone").text(jsonData.notification.payload.additionalData.custPhone)
             // $("#custName").text(jsonData.notification.payload.additionalData.custName)
             $("#full-dest").text(jsonData.notification.payload.additionalData.Dest)
-            $("#transaction-price").text(jsonData.notification.payload.additionalData.transaction-price)
+            $("#transaction-price").text(jsonData.notification.payload.additionalData.transactionPrice)
+
+            $("#trice").text(jsonData.notification.payload.additionalData.trice)
+
+            
 
         };
     
