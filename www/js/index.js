@@ -68,9 +68,9 @@ function driverInit(){
             DriverID: localStorage.getItem("id"),
         },
         success: function(data) {
-            console.log("was here oo" + $("#notif-ID").text())
             if (data.status == true) {
                 $("#job-alert-modal").modal('hide');
+                localStorage.setItem("transactionID", $("#notif-ID").text());
                 localStorage.setItem("fitsIn", $("#fitsIn").text());
                 localStorage.setItem("BusName", $("#BusName").text());
                 localStorage.setItem("BusAdd", $("#BusAdd").text());
@@ -95,6 +95,161 @@ function driverInit(){
             $("#notif-error").text("Error while accepting Job Offer")
         }
     })
+}
+
+function jobProgress(status){
+    if(status == "arrived"){
+
+        $.ajax({
+            type: "post",
+            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            },
+            data: {
+                TransactionID: localStorage.getItem("transactionID"),
+            },
+            success: function(data) {
+                if (data.status == true) {
+
+                    $("#job-instruction1").hide()
+                    $("#job-instruction2").text(data.message)
+                    $("#job-header").text("Arrived and Picking");
+                    $("#eta").empty();
+                    $("#job-stage-no").text("2")
+                    $("#job-button").text("Item Picked").attr("onclick", "jobProgress('picked')")
+                    $("#job-progress").css('width', '40%').text("40%")
+                    $("#job-instruction2").fadeIn(1000)
+    
+                } else if (data.status == false) {
+
+                    $("#job-instruction1").hide()
+                    $("#job-instruction2").html('<span class="text-danger"> ' + data.message + '</span>')
+                    $("#job-instruction2").fadeIn(1000)
+
+                }
+            },
+            error: function(error){
+                $("#job-instruction1").hide()
+                $("#job-instruction2").html('<span class="text-danger"> Error occur connecting to server </span>')
+                $("#job-instruction2").fadeIn(1000)
+            }
+        })
+
+    }else if(status == "picked"){
+
+        $.ajax({
+            type: "post",
+            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            },
+            data: {
+                TransactionID: localStorage.getItem("transactionID"),
+            },
+            success: function(data) {
+                if (data.status == true) {
+
+                    $("#job-instruction2").hide()
+                    $("#bus-phone").hide();
+                    $("#job-instruction3").text(data.message)
+                    $("#job-header").text("Cross-checking");
+                    $("#job-stage-no").text("3")
+                    $("#job-button").text("Set out").attr("onclick", "jobProgress('setOut')")
+                    $("#job-progress").css('width', '60%').text("60%")
+                    $("#job-instruction3").fadeIn(1000)
+                    $("#cust-phone").fadeIn(1000);
+    
+                } else if (data.status == false) {
+
+                    $("#job-instruction2").hide()
+                    $("#job-instruction3").html('<span class="text-danger"> ' + data.message + '</span>')
+                    $("#job-instruction3").fadeIn(1000)
+
+                }
+            },
+            error: function(error){
+                $("#job-instruction2").hide()
+                $("#job-instruction3").html('<span class="text-danger"> Error occur connecting to server </span>')
+                $("#job-instruction3").fadeIn(1000)
+            }
+        })
+
+    }else if(status == "setOut"){
+
+        $.ajax({
+            type: "post",
+            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            },
+            data: {
+                TransactionID: localStorage.getItem("transactionID"),
+            },
+            success: function(data) {
+                if (data.status == true) {
+
+                    $("#job-instruction3").hide()
+                    $("#job-instruction4").text(data.message)
+                    $("#job-header").text("Goods In Transit");
+                    $("#job-stage-no").text("4")
+                    $("#job-button").text("Delivered").attr("onclick", "jobProgress('delivered')")
+                    $("#job-progress").css('width', '80%').text("80%")
+                    $("#job-instruction4").fadeIn(1000)
+    
+                } else if (data.status == false) {
+
+                    $("#job-instruction3").hide()
+                    $("#job-instruction4").html('<span class="text-danger"> ' + data.message + '</span>')
+                    $("#job-instruction4").fadeIn(1000)
+
+                }
+            },
+            error: function(error){
+                $("#job-instruction3").hide()
+                $("#job-instruction4").html('<span class="text-danger"> Error occur connecting to server </span>')
+                $("#job-instruction4").fadeIn(1000)
+            }
+        })
+        
+    }else if(status == "delivered"){
+
+        $.ajax({
+            type: "post",
+            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            },
+            data: {
+                TransactionID: localStorage.getItem("transactionID"),
+            },
+            success: function(data) {
+                if (data.status == true) {
+
+                    $("#job-instruction4").hide()
+                    $("#job-instruction5").text(data.message)
+                    $("#job-header").text("Item Delivered");
+                    $("#job-stage-no").text("5")
+                    $("#job-button").hide()
+                    $("#job-progress").css('width', '100%').text("100%")
+                    $("#job-instruction5").fadeIn(1000)
+    
+                } else if (data.status == false) {
+
+                    $("#job-instruction4").hide()
+                    $("#job-instruction5").html('<span class="text-danger"> ' + data.message + '</span>')
+                    $("#job-instruction5").fadeIn(1000)
+
+                }
+            },
+            error: function(error){
+                $("#job-instruction4").hide()
+                $("#job-instruction5").html('<span class="text-danger"> Error occur connecting to server </span>')
+                $("#job-instruction5").fadeIn(1000)
+            }
+        })
+
+    }
 }
 
 function goTrack(){
@@ -156,40 +311,6 @@ function jobStatus(status){
             $("#err").text("Error occur connecting to server")
         }
     })
-}
-
-function jobProgress(status){
-    if(status == "arrived"){
-        $("#job-header").text("Arrived and Picking");
-        $("#eta").empty();
-        $("#job-stage-no").text("2")
-        $("#job-button").text("Item Picked").attr("onclick", "jobProgress('picked')")
-        $("#job-progress").css('width', '50%').text("50%")
-        $("#job-instruction1").hide()
-        $("#job-instruction2").fadeIn(1000)
-    }else if(status == "picked"){
-        $("#job-header").text("Cross-checking");
-        $("#job-stage-no").text("3")
-        $("#job-button").text("Set out").attr("onclick", "jobProgress('setOut')")
-        $("#job-progress").css('width', '75%').text("75%")
-        $("#job-instruction2").hide()
-        $("#job-instruction3").fadeIn(1000)
-        $("#Bus-phone").hide();
-        $("#cust-phone").fadeIn(1000);
-    }else if(status == "setOut"){
-        $("#job-header").text("Goods In Transit");
-        $("#job-stage-no").text("4")
-        $("#job-button").text("Delivered").attr("onclick", "jobProgress('delivered')")
-        $("#job-progress").css('width', '87%').text("87%")
-        $("#job-instruction3").hide()
-        $("#job-instruction4").fadeIn(1000)
-    }else if(status == "delivered"){
-        $("#job-header").text("Item Delivered");
-        $("#job-button").hide()
-        $("#job-progress").css('width', '100%').text("100%")
-        $("#job-instruction4").hide()
-        $("#job-instruction5").fadeIn(1000)
-    }
 }
 
 function complain(){
