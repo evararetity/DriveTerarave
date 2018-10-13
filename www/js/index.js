@@ -19,10 +19,19 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
-            // localStorage.setItem("TransactionID", jsonData.notification.payload.additionalData.transactionID)
             $("#notif-text").text(jsonData.notification.payload.body)
             $("#notif-ID").text(jsonData.notification.payload.additionalData.transactionID)
             $("#job-alert-modal").modal('show');
+            $("#BusName").text(jsonData.notification.payload.additionalData.BusName)
+            $("#fitsIn").text(jsonData.notification.payload.additionalData.fitsIn)
+            $("#BusAdd").text(jsonData.notification.payload.additionalData.BusAdd)
+            $("#BusPhone").text(jsonData.notification.payload.additionalData.BusPhone)
+            // $("#hidden-eta").text(jsonData.notification.payload.additionalData.hidden-eta)
+            $("#custPhone").text(jsonData.notification.payload.additionalData.custPhone)
+            // $("#custName").text(jsonData.notification.payload.additionalData.custName)
+            $("#full-dest").text(jsonData.notification.payload.additionalData.Dest)
+            $("#transaction-price").text(jsonData.notification.payload.additionalData.transaction-price)
+
         };
     
         window.plugins.OneSignal
@@ -60,23 +69,29 @@ function driverInit(){
         },
         success: function(data) {
             if (data.status == true) {
+                $("#job-alert-modal").modal('hide');
+                localStorage.setItem("fitsIn", $("#fitsIn").text());
+                localStorage.setItem("BusName", $("#BusName").text());
+                localStorage.setItem("BusAdd", $("#BusAdd").text());
+                localStorage.setItem("BusPhone", $("#BusPhone").text());
+                localStorage.setItem("hidden-eta", $("#hidden-eta").text());
+                localStorage.setItem("custPhone", $("#custPhone").text());
+                localStorage.setItem("custName", $("#custName").text());
+                localStorage.setItem("full-dest", $("#full-dest").text());
+                localStorage.setItem("transaction-price", $("#transaction-price").text());
 
                 $.mobile.loading("hide");
-                $("#job-alert-modal").modal('hide');
-                $("#notif-box").empty()
-                $("#notif-box").html('<p style="text-align: center; color: green;><i>'+data.message+'</i></p><p style="text-align: center;><i>Please click the set out button when you have picked item from the shop.</i></p><button onclick="goTrack()">Set Out </button>')
+                $.mobile.navigate("#transaction-page");
 
             } else if (data.status == false) {
-
                 $.mobile.loading("hide");
-                $("#notif-box").empty()
-                $("#notif-box").html("<h5 style='text-align:center;color: red;'>" + data.message + " </h5>")
+                $("#notif-error").text(data.message)
 
             }
         },
         error: function(error){
             $.mobile.loading("hide");
-            $("#notif-box").prepend("<h5 style='text-align:center;color: red;'>" + "Error while picking up item, please try again" + " </h5>")
+            $("#notif-error").text("Error while accepting Job Offer")
         }
     })
 }
@@ -142,10 +157,6 @@ function jobStatus(status){
     })
 }
 
-function transaction(){
-    $.mobile.navigate("#transaction-page");
-}
-
 function jobProgress(status){
     if(status == "arrived"){
         $("#job-header").text("Arrived and Picking");
@@ -162,6 +173,8 @@ function jobProgress(status){
         $("#job-progress").css('width', '75%').text("75%")
         $("#job-instruction2").hide()
         $("#job-instruction3").fadeIn(1000)
+        $("#Bus-phone").hide();
+        $("#cust-phone").fadeIn(1000);
     }else if(status == "setOut"){
         $("#job-header").text("Goods In Transit");
         $("#job-stage-no").text("4")

@@ -94,6 +94,15 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             vehicleType : localStorage.getItem("vehicleType"),
             numberPlate : localStorage.getItem("numberPlate"),
             regNumber : localStorage.getItem("regNumber"),
+            fitsIn : localStorage.getItem("fitsIn"),
+            BusName : localStorage.getItem("BusName"),
+            BusAdd : localStorage.getItem("BusAdd"),
+            BusPhone : localStorage.getItem("BusPhone"),
+            hiddenETA : localStorage.getItem("hidden-eta"),
+            custPhone : localStorage.getItem("custPhone"),
+            custName : localStorage.getItem("custName"),
+            fullDest : localStorage.getItem("full-dest"),
+            price : localStorage.getItem("transaction-price") 
         }
 
         switch (ui.toPage.prop("id")) {
@@ -106,8 +115,20 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
                 $("#numberPlate").text(params.numberPlate);
                 $("#regNumber").text(params.regNumber);
                 break;
-            case "track-page":
-                $("#driveId").text(params.id);
+            case "transaction-page":
+                if(params.fitsIn == "truck" || params.fitsIn == "van"){
+                    $("#vehicle-type").text("local_shipping")
+                }else if(params.fitsIn == "car"){
+                    $("#vehicle-type").text("local_taxi")
+                }
+                $("#Bus-phone").text(params.busPhone)
+                $("#cust-phone").text(params.custPhone)
+                $("#transaction-price").text(params.price)
+                $("#BName").text(params.BusName)
+                $("#BLocate").text(params.BusAdd)
+                $("#CName").text(params.custName)
+                $("#CLocate").text(params.fullDest)
+                $("#DPrice").text(parseInt(params.price)*(20/100))
                 break;
             default:
                 break;
