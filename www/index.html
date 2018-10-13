@@ -297,7 +297,7 @@
                                 <p class="lead" id="notif-text"></p>
                                 <hr class="my-4">
                                 <button type="button" onclick="driverInit()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Accept Offer</button>
-                                <ul>
+                                <ul style="display: none;">
                                     <li id="fitsIn"></li>
                                     <li id="BusName"></li>
                                     <li id="BusAdd"></li>
@@ -307,8 +307,6 @@
                                     <li id="custName"></li>
                                     <li id="full-dest"></li> 
                                     <li id="transaction-price"></li>
-                                    
-                                    <li id="trice"></li>
                                 </ul>
                             </div>
                         </div>
@@ -382,15 +380,15 @@
                                     <div class="card-footer">
                                         <div class="row">
                                             <div class="col">
-                                                <i id="vehicle-type" class="material-icons text-warning" style="font-size: 30px; margin-right: 30px; display: none;"></i>
-
+                                                <i id="vehicle-type" class="material-icons text-warning" style="font-size: 30px; margin-right: 30px;"></i>
+                                                
                                                 <i class="material-icons text-warning">phone</i>
                                                 <span class="post-seconds" id="bus-phone" style="margin-right: 30px;"></span>
                                                 <span class="post-seconds" id="cust-phone" style="margin-right: 30px; display: none;"></span>
                                                 
 
                                                 <i class="material-icons text-warning">account_balance</i>
-                                                <span class="post-seconds">₦<span id="transaction-price"></span> </span>
+                                                <span class="post-seconds">₦<span id="Tprice"></span> </span>
                                             </div>
                                         </div>
                                     </div>

@@ -32,10 +32,6 @@ var app = {
             $("#full-dest").text(jsonData.notification.payload.additionalData.Dest)
             $("#transaction-price").text(jsonData.notification.payload.additionalData.transactionPrice)
 
-            $("#trice").text(jsonData.notification.payload.additionalData.trice)
-
-            
-
         };
     
         window.plugins.OneSignal

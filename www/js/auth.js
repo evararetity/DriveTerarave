@@ -121,14 +121,14 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
                 }else if(params.fitsIn == "car"){
                     $("#vehicle-type").text("local_taxi")
                 }
-                $("#Bus-phone").text(params.busPhone)
+                $("#bus-phone").text(params.BusPhone)
                 $("#cust-phone").text(params.custPhone)
-                $("#transaction-price").text(params.price)
+                $("#Tprice").text(parseInt(params.price))
                 $("#BName").text(params.BusName)
                 $("#BLocate").text(params.BusAdd)
                 $("#CName").text(params.custName)
                 $("#CLocate").text(params.fullDest)
-                $("#DPrice").text(parseInt(params.price)*(20/100))
+                $("#DPrice").text(parseInt(params.price)*(80/100))
                 break;
             default:
                 break;
