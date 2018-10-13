@@ -68,6 +68,7 @@ function driverInit(){
             DriverID: localStorage.getItem("id"),
         },
         success: function(data) {
+            console.log("was here oo" + $("#notif-ID").text())
             if (data.status == true) {
                 $("#job-alert-modal").modal('hide');
                 localStorage.setItem("fitsIn", $("#fitsIn").text());
