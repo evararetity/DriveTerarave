@@ -230,7 +230,7 @@ function jobProgress(status){
                     $("#job-instruction5").text(data.message)
                     $("#job-header").text("Item Delivered");
                     $("#job-stage-no").text("5")
-                    $("#job-button").hide()
+                    $("#job-button").text("Finish").attr("onclick", "jobProgress('finish')")
                     $("#job-progress").css('width', '100%').text("100%")
                     $("#job-instruction5").fadeIn(1000)
     
@@ -249,38 +249,9 @@ function jobProgress(status){
             }
         })
 
+    }else if(status == "finish"){
+        $.mobile.navigate("#main-page");
     }
-}
-
-function goTrack(){
-    $.mobile.loading("show");
-    $.ajax({
-        type: "post",
-        url: "http://teraraveweb.herokuapp.com/mobile/pickedUp",
-        headers: {
-            "x-access-token": localStorage.getItem("token")
-        },
-        data: {
-            TransactionID: localStorage.getItem("TransactionID"),
-        },
-        success: function(data) {
-            if (data.status == true) {
-
-                $.mobile.loading("hide");
-                $.mobile.navigate("#track-page");
-
-            } else if (data.status == false) {
-
-                $.mobile.loading("hide");
-                $("#err").text(data.message)
-
-            }
-        },
-        error: function(error){
-            $.mobile.loading("hide");
-            $("#err").text("Error occur somehow while trying to set out")
-        }
-    })
 }
 
 function jobStatus(status){
@@ -311,8 +282,4 @@ function jobStatus(status){
             $("#err").text("Error occur connecting to server")
         }
     })
-}
-
-function complain(){
-    $("#comment-modal").modal('show');
 }

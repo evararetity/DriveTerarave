@@ -234,6 +234,7 @@
 
             <div class="page-content">
                 <div class="content-sticky-footer">
+
                     <div class="background bg-170"><img src="img/background.png" alt=""></div>
                     <div class="w-100">
                         
@@ -279,6 +280,7 @@
                             <p id="notif-error" class="text-center text-danger"></p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -334,73 +336,105 @@
 
                 <div class="page-content">
                     <div class="content-sticky-footer">
-                        <div class="background bg-170"><img src="img/background.png" alt=""></div>
-                        <br /><br />
-                        <div class="row mx-0">
-                            <div class="col mt-3">
-                                <div class="card z2">
-                                    <div class="card-header">
-                                        <a href="#" class="media">
-                                            <div class="media-body">
-                                                <h5 id="job-header">Going to pickup Location</h5>
-                                                <p id="eta">ETA = 12:50pm</p>
-                                                <h2 class="title-number-carousel color-primary"><span class="text-warning" id="job-stage-no">1</span><small>/5 Stages</small></h2>
-                                            </div>
-                                            <div class="w-auto">
-                                                <button id="job-button" type="button" onclick="jobProgress('arrived')" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Arrived</button>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="progress mb-3">
-                                        <div id="job-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
-                                    </div>
-                                    <div class="card-body p-0">
-                                        <div style="padding: 15px;">
-                                            <p id="job-instruction1" class="text-center">You are encouraged to reach the Pickup Location in 15mins. You can either call the phone number below for info about the Pickup Location or click the "Arrived" button upon arrival for the next stage</p>
 
-                                            <p id="job-instruction2" class="text-center" style="display: none"></p>
+                        <div data-pagination="{&quot;el&quot;: &quot;.swiper-pagination&quot;, &quot;hideOnClick&quot;: true}" class="swiper-container swiper-init swiper-container-horizontal">
+                            <!-- <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                                <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+                                <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+                                
+                            </div> -->
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide swiper-slide-active" >
+                                    <div style="font-size: 15px;">
+                                
+                                        <div class="background bg-170"><img src="img/background.png" alt=""></div>
+                                        <br /><br />
+                                        <div class="row mx-0">
+                                            <div class="col mt-3">
+                                                <div class="card z2">
 
-                                            <div id="job-instruction3" style="display: none">
-                                                <p class="text-center"></p>
-                                                <!-- <button id="job-button" type="button" onclick="complain()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Complain</button> -->
-                                            </div>
+                                                    <div class="card-header">
+                                                        <a href="#" class="media">
+                                                            <div class="media-body">
+                                                                <h5 id="job-header">Going to pickup Location</h5>
+                                                                <p id="eta">ETA = 12:50pm</p>
+                                                                <h2 class="title-number-carousel color-primary"><span class="text-warning" id="job-stage-no">1</span><small>/5 Stages</small></h2>
+                                                            </div>
+                                                            <div class="w-auto">
+                                                                <button id="job-button" type="button" onclick="jobProgress('arrived')" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Arrived</button>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="progress mb-3">
+                                                        <div id="job-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+                                                    </div>
 
-                                            <div id="job-instruction4" style="display: none">
-                                                <p class="text-center"></p>
-                                                <button id="job-button" type="button" onclick="map()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Map</button>
+                                                    <div class="card-body p-0">
+                                                        <div style="padding: 15px;">
+                                                            <p id="job-instruction1" class="text-center" style="color: black;">You are encouraged to reach the Pickup Location in 15mins. You can either call the phone number below for info about the Pickup Location or click the "Arrived" button upon arrival for the next stage</p>
+                
+                                                            <p id="job-instruction2" class="text-center" style="display: none"></p>
+                
+                                                            <div id="job-instruction3" style="display: none">
+                                                                <p class="text-center"></p>
+                                                                <!-- <button id="job-button" type="button" onclick="complain()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Complain</button> --> 
+                                                            </div>
+                
+                                                            <div id="job-instruction4" style="display: none">
+                                                                <p class="text-center"></p>
+                                                                <button id="job-button" type="button" onclick="map()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Map</button>
+                                                            </div>
+                
+                                                            <div id="job-instruction5" style="display: none">
+                                                                <p class="text-center text-success"></p>
+                                                                <!-- <button id="job-button" type="button" onclick="complain()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Comment</button> --> 
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <i id="vehicle-type" class="material-icons text-warning" style="font-size: 30px; margin-right: 30px;"></i>
+                                                                
+                                                                <i class="material-icons text-warning">phone</i>
+                                                                <span class="post-seconds" id="bus-phone" style="margin-right: 30px;"></span>
+                                                                <span class="post-seconds" id="cust-phone" style="margin-right: 30px; display: none;"></span>
+                                                                
+                                                                <i class="material-icons text-warning">account_balance</i>
+                                                                <span class="post-seconds">₦<span id="Tprice"></span> </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                            <div id="job-instruction5" style="display: none">
-                                                <p class="text-center text-success"></p>
-                                                <!-- <button id="job-button" type="button" onclick="complain()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Comment</button> -->
-                                            </div>
-                                            
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="row">
+                
+                                        <div class="row mx-0" >
                                             <div class="col">
-                                                <i id="vehicle-type" class="material-icons text-warning" style="font-size: 30px; margin-right: 30px;"></i>
-                                                
-                                                <i class="material-icons text-warning">phone</i>
-                                                <span class="post-seconds" id="bus-phone" style="margin-right: 30px;"></span>
-                                                <span class="post-seconds" id="cust-phone" style="margin-right: 30px; display: none;"></span>
-                                                
-
-                                                <i class="material-icons text-warning">account_balance</i>
-                                                <span class="post-seconds">₦<span id="Tprice"></span> </span>
+                                                <p class="text-center"><i>This transaction centers on picking up item from <span id="BName"></span> at <Strong id="BLocate"></Strong> to be delivered to <span id="CName"></span> at <strong id="CLocate"></strong>. Your payment for this transaction is ₦<span id="DPrice"></span> after the deduction of TeraRave's 20% charges from the Overall Price</i></p>
                                             </div>
                                         </div>
+
+                                    </div>
+                                </div>
+                                <div class="swiper-slide swiper-slide-next">
+                                    <div id="map" style="
+                                    height: 100vh;
+                                    width: 100%;
+                                    overflow: hidden;
+                                    
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    ">
+                                        <!-- <div id="geolocation"></div>
+                                        <div class="event received"  style=" width: 100%; border: 1px solid green;"></div> -->
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row mx-0" >
-                            <div class="col">
-                                <p class="text-center"><i>This transaction centers on picking up item from <span id="BName"></span> at <Strong id="BLocate"></Strong> to be delivered to <span id="CName"></span> at <strong id="CLocate"></strong>. Your payment for this transaction is ₦<span id="DPrice"></span> after the deduction of TeraRave's 20% charges from the Overall Price</i></p>
-                            </div>
-                        </div>
+                        <!-- <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div> -->
+                        
                     </div>
                 </div>
             </div>
@@ -450,21 +484,16 @@
     
     <!-- page specific script -->
     <script>
+
         $(window).on('load', function() {
             /* gauge chart circular progress */
             $('.progress_profile1').circleProgress({
-                fill: '#169cf1',
-                lineCap: 'butt'
-            });
-            $('.progress_profile2').circleProgress({
                 fill: '#f4465e',
                 lineCap: 'butt'
             });
 
             /*Swiper carousel */
             var mySwiper = new Swiper('.swiper-container', {
-                slidesPerView: 2,
-                spaceBetween: 0,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,

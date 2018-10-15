@@ -66,7 +66,7 @@ var pubnub = new PubNub({
 
 
 
-$(document).delegate("#track-page", "pagebeforecreate", function () {
+$(document).delegate("#transaction-page", "pagebeforecreate", function () {
     pubnub.subscribe({channels: [pnChannel]});
     pubnub.addListener({message:redraw});
 
