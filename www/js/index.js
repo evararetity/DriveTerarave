@@ -33,12 +33,30 @@ var app = {
             $("#transaction-price").text(jsonData.notification.payload.additionalData.transactionPrice)
 
         };
+
+        // .getPermissionSubscriptionState(function(status) {
+        //     status.permissionStatus.hasPrompted; // Bool
+        //     status.permissionStatus.status; // iOS only: Integer: 0 = Not Determined, 1 = Denied, 2 = Authorized
+        //     status.permissionStatus.state; //Android only: Integer: 1 = Authorized, 2 = Denied
+        
+        //     status.subscriptionStatus.subscribed; // Bool
+        //     status.subscriptionStatus.userSubscriptionSetting; // Bool
+        //     status.subscriptionStatus.userId; // String: OneSignal Player ID
+        //     status.subscriptionStatus.pushToken; // String: Device Identifier from FCM/APNs
+        // });
     
         window.plugins.OneSignal
             .startInit("e8f76cf0-88f2-4765-99c4-6b292c180cbb")
             .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
+            
+            console.log("never enter")
+            window.plugins.OneSignal.getPermissionSubscriptionState(function(){
+                console.log("before")
+                console.log(status.subscriptionStatus.userId + "The Player ID")
+                console.log("after")
+            })
         
     },
     // Update DOM on a Received Event
@@ -190,6 +208,7 @@ function jobProgress(status){
                 if (data.status == true) {
 
                     $("#job-instruction3").hide()
+                    initPubNub();
                     $("#job-instruction4").text(data.message)
                     $("#job-header").text("Goods In Transit");
                     $("#job-stage-no").text("4")

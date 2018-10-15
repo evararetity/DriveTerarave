@@ -64,13 +64,16 @@ var pubnub = new PubNub({
     ssl: true
 });
 
-
-
-$(document).delegate("#transaction-page", "pagebeforecreate", function () {
+function initPubNub(){
     pubnub.subscribe({channels: [pnChannel]});
     pubnub.addListener({message:redraw});
 
     setInterval(function() {
         pubnub.publish({channel:pnChannel, message:currentLocation()});
     }, 5000);
-});
+}
+
+
+// $(document).delegate("#transaction-page", "pagebeforecreate", function () {
+    
+// });
