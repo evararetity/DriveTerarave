@@ -49,15 +49,7 @@ var app = {
             .startInit("e8f76cf0-88f2-4765-99c4-6b292c180cbb")
             .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
             .handleNotificationOpened(notificationOpenedCallback)
-            .endInit();
-            
-            console.log("never enter")
-            window.plugins.OneSignal.getPermissionSubscriptionState(function(){
-                console.log("before")
-                console.log(status.subscriptionStatus.userId + "The Player ID")
-                console.log("after")
-            })
-        
+            .endInit(); 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
