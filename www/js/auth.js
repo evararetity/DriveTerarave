@@ -29,6 +29,7 @@ function authDriver(){
                 localStorage.setItem("vehicleType", data.vehicleType);
                 localStorage.setItem("numberPlate", data.numberPlate);
                 localStorage.setItem("regNumber", data.regNumber);
+                window.plugins.OneSignal.setSubscription(true)
                 $.mobile.navigate("#main-page");
 
             } else if (data.status == false) {

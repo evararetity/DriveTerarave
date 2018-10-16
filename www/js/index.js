@@ -50,12 +50,6 @@ var app = {
             .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
-
-            window.plugins.OneSignal.getPermissionSubscriptionState(function(){
-                console.log(status.subscriptionStatus.userId + "The Player ID")
-                $("#check").text(status.subscriptionStatus.userId + "The Player ID")
-            })
-        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -69,6 +63,19 @@ var app = {
         // console.log('Received Event: ' + id);
     }
 };
+
+
+window.plugins.OneSignal.addSubscriptionObserver(function (state) {
+    if (!state.from.subscribed && state.to.subscribed) {
+      console.log("Subscribed for OneSignal push notifications!")
+      // get player ID
+      
+      console.log(state.to.userId + "in")
+    }
+    console.log(state.to.userId + "out")
+    console.log("Push Subscription state changed: " + JSON.stringify(state));
+    console.log("Push Subscription state changed: " + state);
+});
 
 
 function driverInit(){
@@ -286,6 +293,7 @@ function jobStatus(status){
             if (data.status == true) {
 
                 $.mobile.loading("hide");
+                data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
                 $("#statusMsg").text(data.message)
 
             } else if (data.status == false) {
