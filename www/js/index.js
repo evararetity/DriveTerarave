@@ -296,7 +296,7 @@ function jobStatus(status){
                 if(data.busy){
                     window.plugins.OneSignal.setSubscription(false)
                     console.log("NOw its busy")
-                    .getIds(function(userDetails) {
+                    window.plugins.OneSignal.getIds(function(userDetails) {
                         console.log(userDetails.userId); // Player ID
                         console.log(userDetails.pushToken);
                         console.log("i entered the userID scope")
@@ -304,7 +304,7 @@ function jobStatus(status){
                 }else{
                     window.plugins.OneSignal.setSubscription(true)
                     console.log("No longer busy")
-                    .getIds(function(userDetails) {
+                    window.plugins.OneSignal.getIds(function(userDetails) {
                         console.log(userDetails.userId); // Player ID
                         console.log(userDetails.pushToken);
                         console.log("i entered the userID scope")
