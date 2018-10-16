@@ -65,19 +65,17 @@ var app = {
 };
 
 
-window.plugins.OneSignal.addSubscriptionObserver(function (state) {
-    if (!state.from.subscribed && state.to.subscribed) {
-      console.log("Subscribed for OneSignal push notifications!")
-      // get player ID
-      alert(state.to.userId + "in")
-    //   console.log(state.to.userId + "in")
-    }
-    alert(state.to.userId + "out")
-    // console.log(state.to.userId + "out")
-    // console.log("Push Subscription state changed: " + JSON.stringify(state));
-    // console.log("Push Subscription state changed: " + state);
-    alert(state)
-});
+// window.plugins.OneSignal.addSubscriptionObserver(function (state) {
+//     if (!state.from.subscribed && state.to.subscribed) {
+//       console.log("Subscribed for OneSignal push notifications!")
+//       // get player ID
+      
+//       console.log(state.to.userId + "in")
+//     }
+//     console.log(state.to.userId + "out")
+//     console.log("Push Subscription state changed: " + JSON.stringify(state));
+//     console.log("Push Subscription state changed: " + state);
+// });
 
 
 function driverInit(){
@@ -298,9 +296,19 @@ function jobStatus(status){
                 if(data.busy){
                     window.plugins.OneSignal.setSubscription(false)
                     console.log("NOw its busy")
+                    .getIds(function(userDetails) {
+                        console.log(userDetails.userId); // Player ID
+                        console.log(userDetails.pushToken);
+                        console.log("i entered the userID scope")
+                    })
                 }else{
                     window.plugins.OneSignal.setSubscription(true)
                     console.log("No longer busy")
+                    .getIds(function(userDetails) {
+                        console.log(userDetails.userId); // Player ID
+                        console.log(userDetails.pushToken);
+                        console.log("i entered the userID scope")
+                    })
                 }
                 // data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
                 $("#statusMsg").text(data.message)
