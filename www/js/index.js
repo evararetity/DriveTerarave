@@ -69,12 +69,14 @@ window.plugins.OneSignal.addSubscriptionObserver(function (state) {
     if (!state.from.subscribed && state.to.subscribed) {
       console.log("Subscribed for OneSignal push notifications!")
       // get player ID
-      
-      console.log(state.to.userId + "in")
+      alert(state.to.userId + "in")
+    //   console.log(state.to.userId + "in")
     }
-    console.log(state.to.userId + "out")
-    console.log("Push Subscription state changed: " + JSON.stringify(state));
-    console.log("Push Subscription state changed: " + state);
+    alert(state.to.userId + "out")
+    // console.log(state.to.userId + "out")
+    // console.log("Push Subscription state changed: " + JSON.stringify(state));
+    // console.log("Push Subscription state changed: " + state);
+    alert(state)
 });
 
 
