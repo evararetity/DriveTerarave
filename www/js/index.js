@@ -293,7 +293,14 @@ function jobStatus(status){
             if (data.status == true) {
 
                 $.mobile.loading("hide");
-                data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
+                if(data.busy){
+                    window.plugins.OneSignal.setSubscription(false)
+                    console.log("NOw its busy")
+                }else{
+                    window.plugins.OneSignal.setSubscription(true)
+                    console.log("No longer busy")
+                }
+                // data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
                 $("#statusMsg").text(data.message)
 
             } else if (data.status == false) {
