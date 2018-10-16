@@ -7,46 +7,52 @@ function login(){
 }
 
 function authDriver(){
-    $.ajax({
-        type: "post",
-        url: "http://teraraveweb.herokuapp.com/mobile/login",
-        data: {
-            email: $("#email").val(),
-            password: $("#password").val(),
-        },
-        success: function(data) {
-            if (data.status == true) {
-                console.log(data.message)
 
+    window.plugins.OneSignal.getIds(function(userDetails) {
+     
+        $.ajax({
+            type: "post",
+            url: "http://teraraveweb.herokuapp.com/mobile/login",
+            data: {
+                email: $("#email").val(),
+                password: $("#password").val(),
+                notifID: userDetails.userId
+            },
+            success: function(data) {
+                if (data.status == true) {
+                    console.log(data.message)
+    
+                    $.mobile.loading("hide");
+                    $("#error").empty()
+                    $("#success").html(data.message)
+                    localStorage.setItem("token", data.token);
+                    localStorage.setItem("fullname", data.fullname);
+                    localStorage.setItem("id", data.id);
+                    localStorage.setItem("vehicleName", data.vehicleName);
+                    localStorage.setItem("vehicleModel", data.vehicleModel);
+                    localStorage.setItem("vehicleType", data.vehicleType);
+                    localStorage.setItem("numberPlate", data.numberPlate);
+                    localStorage.setItem("regNumber", data.regNumber);
+                    window.plugins.OneSignal.setSubscription(true)
+                    $.mobile.navigate("#main-page");
+    
+                } else if (data.status == false) {
+                    console.log(data.message)
+    
+                    $.mobile.loading("hide");
+                    $("#error").html(data.message)
+                    $("#login").attr("onClick", "login()")
+    
+                }
+            },
+            error: function(error){
                 $.mobile.loading("hide");
-                $("#error").empty()
-                $("#success").html(data.message)
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("fullname", data.fullname);
-                localStorage.setItem("id", data.id);
-                localStorage.setItem("vehicleName", data.vehicleName);
-                localStorage.setItem("vehicleModel", data.vehicleModel);
-                localStorage.setItem("vehicleType", data.vehicleType);
-                localStorage.setItem("numberPlate", data.numberPlate);
-                localStorage.setItem("regNumber", data.regNumber);
-                window.plugins.OneSignal.setSubscription(true)
-                $.mobile.navigate("#main-page");
-
-            } else if (data.status == false) {
-                console.log(data.message)
-
-                $.mobile.loading("hide");
-                $("#error").html(data.message)
+                $("#error").html("Error while Logging in")
                 $("#login").attr("onClick", "login()")
-
             }
-        },
-        error: function(error){
-            $.mobile.loading("hide");
-            $("#error").html("Error while Logging in")
-            $("#login").attr("onClick", "login()")
-        }
+        })
     })
+
 }
 
 //================================Check if Logged in and direct to main page/login page =============================

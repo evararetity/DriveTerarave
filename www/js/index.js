@@ -293,24 +293,7 @@ function jobStatus(status){
             if (data.status == true) {
 
                 $.mobile.loading("hide");
-                if(data.busy){
-                    window.plugins.OneSignal.setSubscription(false)
-                    console.log("NOw its busy")
-                    window.plugins.OneSignal.getIds(function(userDetails) {
-                        console.log(userDetails.userId); // Player ID
-                        console.log(userDetails.pushToken);
-                        console.log("i entered the userID scope")
-                    })
-                }else{
-                    window.plugins.OneSignal.setSubscription(true)
-                    console.log("No longer busy")
-                    window.plugins.OneSignal.getIds(function(userDetails) {
-                        console.log(userDetails.userId); // Player ID
-                        console.log(userDetails.pushToken);
-                        console.log("i entered the userID scope")
-                    })
-                }
-                // data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
+                data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
                 $("#statusMsg").text(data.message)
 
             } else if (data.status == false) {
