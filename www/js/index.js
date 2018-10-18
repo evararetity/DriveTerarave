@@ -105,6 +105,7 @@ function driverInit(){
                 localStorage.setItem("transaction-price", $("#transaction-price").text());
 
                 $.mobile.loading("hide");
+                window.plugins.OneSignal.promptLocation();
                 $.mobile.navigate("#transaction-page");
 
             } else if (data.status == false) {
@@ -293,7 +294,12 @@ function jobStatus(status){
             if (data.status == true) {
 
                 $.mobile.loading("hide");
-                data.busy == true ? window.plugins.OneSignal.setSubscription(false) : window.plugins.OneSignal.setSubscription(true)
+                if(data.busy){
+                    window.plugins.OneSignal.setSubscription(false)
+                }else{
+                    window.plugins.OneSignal.promptLocation();
+                    window.plugins.OneSignal.setSubscription(true)
+                }
                 $("#statusMsg").text(data.message)
 
             } else if (data.status == false) {

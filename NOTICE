@@ -13,7 +13,7 @@ Jasmine (https://github.com/pivotal/jasmine)
 3299777 app ID
 pgb update 3299777 C:\Workspace\mobile\TeraRave
 
-<resource-file src="google-services.json" target="google-services.json" />
+    <preference name="StatusBarBackgroundColor" value="#fac312" />
 
 <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
