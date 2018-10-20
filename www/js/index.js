@@ -78,6 +78,23 @@ var app = {
 // });
 
 
+
+var Permission = window.plugins.Permission
+ 
+var permission = 'android.permission.ACCESS_FINE_LOCATION'
+
+function locationPermision(){
+    Permission.has(permission, function(results) {
+        if (!results[permission]) {
+            Permission.request(permission, function(results) {
+                if (result[permission]) {
+                    console.log("Permision granted!")
+                }
+            }, alert)
+        }
+    }, alert)
+}
+ 
 function driverInit(){
     $.mobile.loading("show");
     $.ajax({
@@ -105,7 +122,7 @@ function driverInit(){
                 localStorage.setItem("transaction-price", $("#transaction-price").text());
 
                 $.mobile.loading("hide");
-                window.plugins.OneSignal.promptLocation();
+                locationPermision()
                 $.mobile.navigate("#transaction-page");
 
             } else if (data.status == false) {
@@ -297,7 +314,7 @@ function jobStatus(status){
                 if(data.busy){
                     window.plugins.OneSignal.setSubscription(false)
                 }else{
-                    window.plugins.OneSignal.promptLocation();
+                    locationPermision()
                     window.plugins.OneSignal.setSubscription(true)
                 }
                 $("#statusMsg").text(data.message)

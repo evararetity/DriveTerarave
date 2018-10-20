@@ -38,4 +38,5 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="phonegap-plugin-push" />
     <plugin name="cordova-plugin-statusbar" />
+    <plugin name="cordova-plugin-permission" />
 </widget>

@@ -1,3 +1,104 @@
+var mapStyle = [
+    {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": "32"
+            },
+            {
+                "lightness": "-3"
+            },
+            {
+                "visibility": "on"
+            },
+            {
+                "weight": "1.18"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": "-70"
+            },
+            {
+                "lightness": "14"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": "100"
+            },
+            {
+                "lightness": "-14"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": "12"
+            }
+        ]
+    }
+];
 window.lat = 8.475340;
 window.lng = 4.648040;
 
@@ -29,8 +130,21 @@ var mark;
 var lineCoords = [];
 
 var initMap = function() {
-    map  = new google.maps.Map(document.getElementById('map'), {center:{lat:lat,lng:lng},zoom:15});
-    mark = new google.maps.Marker({position:{lat:lat, lng:lng}, map:map});
+    map  = new google.maps.Map(document.getElementById('map'), {
+            center:{lat:lat,lng:lng}, 
+            zoom:14, 
+            mapTypeId: 'terrain',
+            styles: mapStyle
+        });
+    mark = new google.maps.Marker({
+        position:{lat:lat, lng:lng}, 
+        map:map, 
+        title:"TeraRave's Vehicle in Transit...",
+        icon: {
+            url: "../img/markers/hut.png",
+            scaledSize: new google.maps.Size(34, 36)
+        }
+    });
 };
 
 window.initMap = initMap;
@@ -47,11 +161,13 @@ var redraw = function(payload) {
     var lineCoordinatesPath = new google.maps.Polyline({
         path: lineCoords,
         geodesic: true,
-        strokeColor: '#888888'
+        strokeColor: '#704528',
+        strokeOpacity: 1.0,
+        strokeWeight: 4
     });
 
     lineCoordinatesPath.setMap(map);
-    };
+};
 
 
 // var pnChannel = "map-channel";
