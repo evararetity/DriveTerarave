@@ -307,8 +307,8 @@ function jobStatus(status){
                 if(data.busy){
                     window.plugins.OneSignal.setSubscription(false)
                 }else{
-                    // locationPermision()
                     window.plugins.OneSignal.setSubscription(true)
+                    locationPermision()
                 }
                 $("#statusMsg").text(data.message)
 
