@@ -141,7 +141,7 @@ var initMap = function() {
         map:map, 
         title:"TeraRave's Vehicle in Transit...",
         icon: {
-            url: "../img/markers/hut.png",
+            url: "http://teraraveweb.herokuapp.com//img/markers/pickup.png",
             scaledSize: new google.maps.Size(34, 36)
         }
     });
