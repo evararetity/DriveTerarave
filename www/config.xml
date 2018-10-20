@@ -17,6 +17,7 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <splash src="screen.png" />
     <icon src="icon.png" />
     <allow-navigation href="*" />
@@ -38,5 +39,5 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="phonegap-plugin-push" />
     <plugin name="cordova-plugin-statusbar" />
-    <plugin name="cordova-plugin-permission" />
+    <plugin name="cordova.plugins.diagnostic" source="npm" />
 </widget>

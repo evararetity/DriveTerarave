@@ -78,21 +78,14 @@ var app = {
 // });
 
 
-
-var Permission = window.plugins.Permission
- 
-var permission = 'android.permission.ACCESS_FINE_LOCATION'
-
 function locationPermision(){
-    Permission.has(permission, function(results) {
-        if (!results[permission]) {
-            Permission.request(permission, function(results) {
-                if (result[permission]) {
-                    console.log("Permision granted!")
-                }
-            }, alert)
+    cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
+        if(!enabled){
+            cordova.plugins.diagnostic.switchToLocationSettings();
         }
-    }, alert)
+    }, function(error){
+        console.error("The following error occurred: "+error);
+    });
 }
  
 function driverInit(){
