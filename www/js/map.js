@@ -145,6 +145,21 @@ var initMap = function() {
             scaledSize: new google.maps.Size(34, 36)
         }
     });
+
+    var destGeo = {
+        lat: localStorage.getItem("destLat"),
+        lng: localStorage.getItem("destLng")
+    }
+
+    destMark = new google.maps.Marker({
+        position: destGeo, 
+        map:map, 
+        title:"Delivery Location",
+        icon: {
+            url: "http://teraraveweb.herokuapp.com//img/markers/hut.png",
+            scaledSize: new google.maps.Size(34, 36)
+        }
+    });
 };
 
 window.initMap = initMap;

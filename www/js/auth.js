@@ -25,6 +25,7 @@ function authDriver(){
                     $.mobile.loading("hide");
                     $("#error").empty()
                     $("#success").html(data.message)
+
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("fullname", data.fullname);
                     localStorage.setItem("id", data.id);
@@ -33,7 +34,10 @@ function authDriver(){
                     localStorage.setItem("vehicleType", data.vehicleType);
                     localStorage.setItem("numberPlate", data.numberPlate);
                     localStorage.setItem("regNumber", data.regNumber);
+                    localStorage.setItem("completedJobs", data.completedJobs);
+
                     window.plugins.OneSignal.setSubscription(true)
+
                     $.mobile.navigate("#main-page");
     
                 } else if (data.status == false) {
@@ -101,6 +105,7 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             vehicleType : localStorage.getItem("vehicleType"),
             numberPlate : localStorage.getItem("numberPlate"),
             regNumber : localStorage.getItem("regNumber"),
+            completedJobs : localStorage.getItem("completedJobs"),
             fitsIn : localStorage.getItem("fitsIn"),
             BusName : localStorage.getItem("BusName"),
             BusAdd : localStorage.getItem("BusAdd"),
@@ -109,7 +114,7 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             custPhone : localStorage.getItem("custPhone"),
             custName : localStorage.getItem("custName"),
             fullDest : localStorage.getItem("full-dest"),
-            price : localStorage.getItem("transaction-price") 
+            price : localStorage.getItem("transaction-price")
         }
 
         switch (ui.toPage.prop("id")) {
@@ -121,6 +126,9 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
                 $("#vehicleType").text(params.vehicleType);
                 $("#numberPlate").text(params.numberPlate);
                 $("#regNumber").text(params.regNumber);
+                $("#completedJobs").text(params.completedJobs);
+
+                
                 break;
             case "transaction-page":
                 if(params.fitsIn == "truck" || params.fitsIn == "van"){

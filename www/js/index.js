@@ -31,6 +31,8 @@ var app = {
             // $("#custName").text(jsonData.notification.payload.additionalData.custName)
             $("#full-dest").text(jsonData.notification.payload.additionalData.Dest)
             $("#transaction-price").text(jsonData.notification.payload.additionalData.transactionPrice)
+            $("#destLng").text(jsonData.notification.payload.additionalData.destLng)
+            $("#destLat").text(jsonData.notification.payload.additionalData.destLat)
 
         };
 
@@ -113,6 +115,8 @@ function driverInit(){
                 localStorage.setItem("custName", $("#custName").text());
                 localStorage.setItem("full-dest", $("#full-dest").text());
                 localStorage.setItem("transaction-price", $("#transaction-price").text());
+                localStorage.setItem("destLng", $("#destLng").text());
+                localStorage.setItem("destLat", $("#destLat").text());
 
                 $.mobile.loading("hide");
                 locationPermision()
@@ -154,6 +158,7 @@ function jobProgress(status){
                     $("#job-button").text("Item Picked").attr("onclick", "jobProgress('picked')")
                     $("#job-progress").css('width', '40%').text("40%")
                     $("#job-instruction2").fadeIn(1000)
+                    localStorage.setItem("jobProgressLevel", status);
     
                 } else if (data.status == false) {
 
@@ -193,6 +198,7 @@ function jobProgress(status){
                     $("#job-progress").css('width', '60%').text("60%")
                     $("#job-instruction3").fadeIn(1000)
                     $("#cust-phone").fadeIn(1000);
+                    localStorage.setItem("jobProgressLevel", status);
     
                 } else if (data.status == false) {
 
@@ -231,6 +237,7 @@ function jobProgress(status){
                     $("#job-button").text("Delivered").attr("onclick", "jobProgress('delivered')")
                     $("#job-progress").css('width', '80%').text("80%")
                     $("#job-instruction4").fadeIn(1000)
+                    localStorage.setItem("jobProgressLevel", status);
     
                 } else if (data.status == false) {
 
@@ -268,6 +275,7 @@ function jobProgress(status){
                     $("#job-button").text("Finish").attr("onclick", "jobProgress('finish')")
                     $("#job-progress").css('width', '100%').text("100%")
                     $("#job-instruction5").fadeIn(1000)
+                    localStorage.removeItem("jobProgressLevel")
     
                 } else if (data.status == false) {
 
@@ -323,4 +331,8 @@ function jobStatus(status){
             $("#err").text("Error occur connecting to server")
         }
     })
+}
+
+function OnJob(){
+    console.log("The onjob was clicked")
 }
