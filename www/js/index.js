@@ -338,13 +338,14 @@ function OnJob(){
     if(!progress){
 
         $("#job-instruction1").empty()
-        $("#bus-phone").empty();
+        $("#bus-phone").hide();
         $("#job-header").text("No Transaction Available");
-        $("#job-stage-no").empty()
-        $("#job-button").empty()
+        $("#job-stage-no").text("0")
+        $("#job-button").hide()
         $("#eta").empty();
         $("#job-progress").css('width', '0%').text("0%")
-        $("#cust-phone").empty();
+        $("#cust-phone").hide();
+        $("#Tprice").hide()
         $("#Transaction-notifier").text("There is no transaction Availble at the moment, Please wait for request nofication and make sure you have the 'I am Ready button' on the dashboard");
 
         $.mobile.navigate("#transaction-page");
