@@ -334,5 +334,57 @@ function jobStatus(status){
 }
 
 function OnJob(){
-    console.log("The onjob was clicked")
+    var progress = localStorage.getItem("jobProgressLevel")
+    if(!progress){
+
+        $("#job-instruction1").empty()
+        $("#bus-phone").empty();
+        $("#job-header").text("No Transaction Available");
+        $("#job-stage-no").empty()
+        $("#job-button").empty()
+        $("#eta").empty();
+        $("#job-progress").css('width', '0%').text("0%")
+        $("#cust-phone").empty();
+        $("#Transaction-notifier").text("There is no transaction Availble at the moment, Please wait for request nofication and make sure you have the 'I am Ready button' on the dashboard");
+
+        $.mobile.navigate("#transaction-page");
+
+    }else if(progress == "arrived"){
+
+        $("#job-instruction1").hide()
+        $("#job-instruction2").text('You are currently packing the item(s) into your vehicle. Please click the "Item Picked" button when you are done packing so you can move to the next stage')
+        $("#job-header").text("Arrived and Picking");
+        $("#eta").empty();
+        $("#job-stage-no").text("2")
+        $("#job-button").text("Item Picked").attr("onclick", "jobProgress('picked')")
+        $("#job-progress").css('width', '40%').text("40%")
+        $("#job-instruction2").fadeIn()
+
+        $.mobile.navigate("#transaction-page");
+    }else if(progress == "picked"){
+
+        $("#job-instruction1").hide()
+        $("#job-instruction3").text('Please be sure there is no problem with this transaction. Give us a call if there for any compalain, if none, please click the "Set Out" button to begin your delivery journey')
+        $("#job-header").text("Cross-checking");
+        $("#eta").empty();
+        $("#job-stage-no").text("3")
+        $("#job-button").text("Set out").attr("onclick", "jobProgress('setOut')")
+        $("#job-progress").css('width', '60%').text("60%")
+        $("#job-instruction3").fadeIn()
+
+        $.mobile.navigate("#transaction-page");
+
+    }else if(progress == "setOut"){
+
+        $("#job-instruction1").hide()
+        $("#job-instruction4").text('Please be fast and carefull. You can swipe left to view the map, call the number below for info about Delivery Location or call us to make a complain. Please click the "Delivered" button upon delivery')
+        $("#job-header").text("Goods In Transit");
+        $("#eta").empty();
+        $("#job-stage-no").text("4")
+        $("#job-button").text("Delivered").attr("onclick", "jobProgress('delivered')")
+        $("#job-progress").css('width', '80%').text("80%")
+        $("#job-instruction4").fadeIn()
+
+        $.mobile.navigate("#transaction-page");
+    }
 }

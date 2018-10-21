@@ -178,24 +178,20 @@
                                     <ul>
                                         <li>
                                             <a href="#main-page" class="popup-close">
-                                                <div class="item-title">
-                                                    <i class="icon material-icons md-only">poll</i> Dashboard
+                                                <div class="item-title" data-dismiss="modal" aria-label="Close">
+                                                    <i aria-hidden="true" class="icon material-icons md-only">poll</i> Dashboard
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#main-page" class="popup-close">
+                                                <div class="item-title" data-dismiss="modal" aria-label="Close">
+                                                    <i aria-hidden="true" class="icon material-icons md-only">add_shopping_cart</i> Job Offers
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="" class="popup-close">
-                                                <div class="item-title">
-                                                    <i class="icon material-icons md-only">add_shopping_cart</i> Job Offers
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="popup-close">
-                                                <!-- <div class="item-title">
-                                                    <i class="icon material-icons md-only">filter_none</i> On-Job
-                                                </div> -->
-
                                                 <div class="item-title" data-dismiss="modal" aria-label="Close" onclick="OnJob()">
                                                     <i aria-hidden="true" class="icon material-icons md-only">filter_none</i> On-Job
                                                 </div>
@@ -208,7 +204,9 @@
                         <br>
                         <div class="row mx-0">
                             <div class="col">
-                                <a onclick="logout()" id="logout" class="rounded btn btn-outline-white text-white popup-close">Logout</a>
+                                <a onclick="logout()" id="logout" class="rounded btn btn-outline-white text-white popup-close" data-dismiss="modal" aria-label="Close">
+                                    Logout
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -419,7 +417,7 @@
                 
                                         <div class="row mx-0" >
                                             <div class="col">
-                                                <p class="text-center"><i>This transaction centers on picking up item from <span id="BName"></span> at <Strong id="BLocate"></Strong> to be delivered to <span id="CName"></span> at <strong id="CLocate"></strong>. Your payment for this transaction is ₦<span id="DPrice"></span> after the deduction of TeraRave's 20% charges from the Overall Price</i></p>
+                                                <p class="text-center" id="Transaction-notifier"><i>This transaction centers on picking up item from <span id="BName"></span> at <Strong id="BLocate"></Strong> to be delivered to <span id="CName"></span> at <strong id="CLocate"></strong>. Your payment for this transaction is ₦<span id="DPrice"></span> after the deduction of TeraRave's 20% charges from the Overall Price</i></p>
                                             </div>
                                         </div>
 
