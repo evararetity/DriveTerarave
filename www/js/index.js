@@ -94,7 +94,7 @@ function driverInit(){
     $.mobile.loading("show");
     $.ajax({
         type: "post",
-        url: "http://teraraveweb.herokuapp.com/mobile/driverInit",
+        url: "https://teraraveweb.herokuapp.com/mobile/driverInit",
         headers: {
             "x-access-token": localStorage.getItem("token")
         },
@@ -140,7 +140,7 @@ function jobProgress(status){
 
         $.ajax({
             type: "post",
-            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            url: "https://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
             headers: {
                 "x-access-token": localStorage.getItem("token")
             },
@@ -179,7 +179,7 @@ function jobProgress(status){
 
         $.ajax({
             type: "post",
-            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            url: "https://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
             headers: {
                 "x-access-token": localStorage.getItem("token")
             },
@@ -219,7 +219,7 @@ function jobProgress(status){
 
         $.ajax({
             type: "post",
-            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            url: "https://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
             headers: {
                 "x-access-token": localStorage.getItem("token")
             },
@@ -258,7 +258,7 @@ function jobProgress(status){
 
         $.ajax({
             type: "post",
-            url: "http://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
+            url: "https://teraraveweb.herokuapp.com/mobile/jobProgress/"+status,
             headers: {
                 "x-access-token": localStorage.getItem("token")
             },
@@ -301,7 +301,7 @@ function jobStatus(status){
     $.mobile.loading("show");
     $.ajax({
         type: "post",
-        url: "http://teraraveweb.herokuapp.com/mobile/job/"+status,
+        url: "https://teraraveweb.herokuapp.com/mobile/job/"+status,
         headers: {
             "x-access-token": localStorage.getItem("token")
         },

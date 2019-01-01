@@ -12,7 +12,7 @@ function authDriver(){
      
         $.ajax({
             type: "post",
-            url: "http://teraraveweb.herokuapp.com/mobile/login",
+            url: "https://teraraveweb.herokuapp.com/mobile/login",
             data: {
                 email: $("#email").val(),
                 password: $("#password").val(),
@@ -234,7 +234,7 @@ function login(){
 function authDriver(){
     $.ajax({
         type: "post",
-        url: "http://teraraveweb.herokuapp.com/mobile/login",
+        url: "https://teraraveweb.herokuapp.com/mobile/login",
         data: {
             email: $("#email").val(),
             password: $("#password").val(),
