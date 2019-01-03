@@ -21,6 +21,8 @@ var app = {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
             $("#notif-text").text(jsonData.notification.payload.body)
             $("#notif-ID").text(jsonData.notification.payload.additionalData.transactionID)
+            console.log("we are here to check ID")
+            console.log(jsonData.notification.payload.additionalData.transactionID)
             $("#job-alert-modal").modal('show');
             $("#BusName").text(jsonData.notification.payload.additionalData.BusName)
             $("#fitsIn").text(jsonData.notification.payload.additionalData.fitsIn)
@@ -92,6 +94,7 @@ function locationPermision(){
  
 function driverInit(){
     $.mobile.loading("show");
+    console.log($("#notif-ID").text())
     $.ajax({
         type: "post",
         url: "https://teraraveweb.herokuapp.com/mobile/driverInit",
