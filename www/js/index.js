@@ -344,7 +344,7 @@ function jobStatus(status){
 function itemCodeCheck(){
     $.mobile.loading("show");
     $.ajax({
-        type: "post",
+        type: "GET",
         url: "https://teraraveweb.herokuapp.com/mobile/itemCode",
         headers: {
             "x-access-token": localStorage.getItem("token")
@@ -362,8 +362,8 @@ function itemCodeCheck(){
             } else if (data.status == false) {
 
                 $.mobile.loading("hide");
-                $("#checkResponse").text(data.message)
-                $("#checkResponse").fadeIn(1000)
+                $("#checkErr").text(data.message)
+                $("#checkErr").fadeIn(1000)
             }
         },
         error: function(error){
@@ -377,7 +377,7 @@ function itemCodeCheck(){
 function userCodeCheck(){
     $.mobile.loading("show");
     $.ajax({
-        type: "post",
+        type: "GET",
         url: "https://teraraveweb.herokuapp.com/mobile/userCode",
         headers: {
             "x-access-token": localStorage.getItem("token")
@@ -395,8 +395,8 @@ function userCodeCheck(){
             } else if (data.status == false) {
 
                 $.mobile.loading("hide");
-                $("#checkResponse").text(data.message)
-                $("#checkResponse").fadeIn(1000)
+                $("#checkErr").text(data.message)
+                $("#checkErr").fadeIn(1000)
             }
         },
         error: function(error){
