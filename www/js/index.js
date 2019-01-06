@@ -191,8 +191,6 @@ function jobProgress(status){
                 if (data.status == true) {
 
                     $("#itemCodeCheck").hide()
-                    $("#checkResponse").hide()
-                    $("#checkErr").hide()
                     $("#job-instruction2").hide()
                     $("#bus-phone").hide();
                     $("#job-instruction3").text(data.message)
@@ -274,8 +272,6 @@ function jobProgress(status){
                 if (data.status == true) {
 
                     $("#userCodeCheck").hide()
-                    $("#checkResponse").hide()
-                    $("#checkErr").hide()
                     $("#job-instruction4").hide()
                     $("#job-instruction5").text(data.message)
                     $("#job-header").text("Item Delivered");
@@ -337,72 +333,6 @@ function jobStatus(status){
         error: function(error){
             $.mobile.loading("hide");
             $("#err").text("Error occur connecting to server")
-        }
-    })
-}
-
-function itemCodeCheck(){
-    $.mobile.loading("show");
-    $.ajax({
-        type: "GET",
-        url: "https://teraraveweb.herokuapp.com/mobile/itemCode",
-        headers: {
-            "x-access-token": localStorage.getItem("token")
-        },
-        data: {
-            code: $("#ItemCode").val()
-        },
-        success: function(data) {
-            if (data.status == true) {
-
-                $.mobile.loading("hide");
-                $("#checkResponse").text(data.message)
-                $("#checkResponse").fadeIn(1000)
-
-            } else if (data.status == false) {
-
-                $.mobile.loading("hide");
-                $("#checkErr").text(data.message)
-                $("#checkErr").fadeIn(1000)
-            }
-        },
-        error: function(error){
-            $.mobile.loading("hide");
-            $("#checkErr").text("Error occur connecting to server")
-            $("#checkErr").fadeIn(1000)
-        }
-    })
-}
-
-function userCodeCheck(){
-    $.mobile.loading("show");
-    $.ajax({
-        type: "GET",
-        url: "https://teraraveweb.herokuapp.com/mobile/userCode",
-        headers: {
-            "x-access-token": localStorage.getItem("token")
-        },
-        data: {
-            code: $("#UserCode").val()
-        },
-        success: function(data) {
-            if (data.status == true) {
-
-                $.mobile.loading("hide");
-                $("#checkResponse").text(data.message)
-                $("#checkResponse").fadeIn(1000)
-
-            } else if (data.status == false) {
-
-                $.mobile.loading("hide");
-                $("#checkErr").text(data.message)
-                $("#checkErr").fadeIn(1000)
-            }
-        },
-        error: function(error){
-            $.mobile.loading("hide");
-            $("#checkErr").text("Error occur connecting to server")
-            $("#checkErr").fadeIn(1000)
         }
     })
 }
