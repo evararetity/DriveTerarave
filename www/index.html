@@ -381,9 +381,9 @@
                                                             <p id="job-instruction2" class="text-center" style="display: none"></p>
 
                                                             <div id="itemCodeCheck" class="input-group" style="display: none;">
-                                                                <input type="email" class="form-control" placeholder="Check Item Code" aria-label="Username">
+                                                                <input type="email" class="form-control" id="ItemCode" placeholder="Check Item Code" aria-label="Username">
                                                                 <div class="input-group-append">
-                                                                    <button type="button" class="input-group-text close-search"><i class="material-icons">search</i></button>
+                                                                    <button type="button" onclick="itemCodeCheck()" class="input-group-text close-search"><i class="material-icons">search</i></button>
                                                                 </div>
                                                             </div>
                 
@@ -398,9 +398,9 @@
                                                             </div>
 
                                                             <div id="userCodeCheck" class="input-group" style="display: none;">
-                                                                <input type="email" class="form-control" placeholder="Check Reciever's Code" aria-label="Username">
+                                                                <input type="email" class="form-control" id="UserCode" placeholder="Check Reciever's Code" aria-label="Username">
                                                                 <div class="input-group-append">
-                                                                    <button type="button" class="input-group-text close-search"><i class="material-icons">search</i></button>
+                                                                    <button type="button" onclick="userCodeCheck()" class="input-group-text close-search"><i class="material-icons">search</i></button>
                                                                 </div>
                                                             </div>
                 
@@ -409,6 +409,9 @@
                                                                 <!-- <button id="job-button" type="button" onclick="complain()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Comment</button> --> 
                                                             </div>
                                                             
+                                                            <p id="checkResponse" class="text-center" style="display: none; color: green;"></p>
+
+                                                            <p id="checkErr" class="text-center" style="display: none; color: red;"></p>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
