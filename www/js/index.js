@@ -21,8 +21,6 @@ var app = {
             // alert("Notification opened:\n" + JSON.stringify(jsonData))
             $("#notif-text").text(jsonData.notification.payload.body)
             $("#notif-ID").text(jsonData.notification.payload.additionalData.transactionID)
-            console.log("we are here to check ID")
-            console.log(jsonData.notification.payload.additionalData.transactionID)
             $("#job-alert-modal").modal('show');
             $("#BusName").text(jsonData.notification.payload.additionalData.BusName)
             $("#fitsIn").text(jsonData.notification.payload.additionalData.fitsIn)
@@ -94,7 +92,6 @@ function locationPermision(){
  
 function driverInit(){
     $.mobile.loading("show");
-    console.log($("#notif-ID").text())
     $.ajax({
         type: "post",
         url: "https://teraraveweb.herokuapp.com/mobile/driverInit",
@@ -161,6 +158,7 @@ function jobProgress(status){
                     $("#job-button").text("Item Picked").attr("onclick", "jobProgress('picked')")
                     $("#job-progress").css('width', '40%').text("40%")
                     $("#job-instruction2").fadeIn(1000)
+                    $("#itemCodeCheck").fadeIn(1000)
                     localStorage.setItem("jobProgressLevel", status);
     
                 } else if (data.status == false) {
@@ -240,6 +238,7 @@ function jobProgress(status){
                     $("#job-button").text("Delivered").attr("onclick", "jobProgress('delivered')")
                     $("#job-progress").css('width', '80%').text("80%")
                     $("#job-instruction4").fadeIn(1000)
+                    $("#userCodeCheck").fadeIn(1000)
                     localStorage.setItem("jobProgressLevel", status);
     
                 } else if (data.status == false) {

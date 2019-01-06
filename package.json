@@ -24,7 +24,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-splashscreen": {},
       "phonegap-plugin-push": {},
-      "cordova-plugin-statusbar": {}
+      "cordova-plugin-statusbar": {},
+      "cordova.plugins.diagnostic": {}
     }
   },
   "dependencies": {

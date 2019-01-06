@@ -39,5 +39,5 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="phonegap-plugin-push" />
     <plugin name="cordova-plugin-statusbar" />
-    <plugin name="cordova.plugins.diagnostic" source="npm" />
+    <plugin name="cordova.plugins.diagnostic" />
 </widget>
