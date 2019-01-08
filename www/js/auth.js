@@ -38,7 +38,11 @@ function authDriver(){
 
                     window.plugins.OneSignal.setSubscription(true)
 
-                    $.mobile.navigate("#updatePage");
+                    if(data.LicenceNo == true){
+                        $.mobile.navigate("#main-page");
+                    }else{
+                        $.mobile.navigate("#updatePage");
+                    }
     
                 } else if (data.status == false) {
                     console.log(data.message)
