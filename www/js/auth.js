@@ -38,7 +38,7 @@ function authDriver(){
 
                     window.plugins.OneSignal.setSubscription(true)
 
-                    if(data.LicenceNo == true){
+                    if(data.updated == true){
                         $.mobile.navigate("#main-page");
                     }else{
                         $.mobile.navigate("#updatePage");
