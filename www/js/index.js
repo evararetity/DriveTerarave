@@ -390,18 +390,21 @@ function userCodeCheck(){
 
                 $.mobile.loading("hide");
                 $("#checkResponse").text(data.message)
+                $("#checkErr").hide()
                 $("#checkResponse").fadeIn(1000)
 
             } else if (data.status == false) {
 
                 $.mobile.loading("hide");
                 $("#checkErr").text(data.message)
+                $("#checkResponse").hide()
                 $("#checkErr").fadeIn(1000)
             }
         },
         error: function(error){
             $.mobile.loading("hide");
             $("#checkErr").text("Error occur connecting to server")
+            $("#checkResponse").hide()
             $("#checkErr").fadeIn(1000)
         }
     })

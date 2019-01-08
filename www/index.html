@@ -40,7 +40,7 @@
     </div>
     <div class="wrapper">
         <!-- login page start -->
-        <div class="page"data-role="page" id="login-page" >
+        <div class="page" data-role="page" id="login-page" >
             <div class="page-content h-100">
                 <div class="background"><img src="img/background.png" alt=""></div>
                 <div class="row mx-0">
@@ -107,6 +107,90 @@
            
         </div>
         <!-- login page ends -->
+
+        <!-- Update Page Starts -->
+        <div class="page" data-role="page" id="updatePage">
+            <div class="page-content h-100">
+                <div class="background"><img src="img/background.png" alt=""></div>
+                <div class="row mx-0">
+                    <div class="col">
+                        <img src="img/logo.png" alt="" class="login-logo">
+                        <h1 class="login-title"><small>Update Profile</small></h1>
+                    </div>
+                </div>
+                <div class="row mx-0">
+                    <div class="col">
+                        <!-- tabs content start here -->
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="signup" role="tabpanel">
+                                <div class="login-input-content">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="material-icons">filter_1</i></span>
+                                        </div>
+                                        <input type="text" id="vehicleName" placeholder="Vehicle Name">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="material-icons">filter_2</i></span>
+                                        </div>
+                                        <select name="" id="vehicleType">
+                                            <option value="">Vehicle Type</option>
+                                            <option value="car">Car</option>
+                                            <option value="van">Van</option>
+                                            <option value="truck">Truck</option>
+                                        </select>
+                                    </div>
+
+                                   <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="material-icons">filter_3</i></span>
+                                        </div>
+                                        <input id="LicenceNo" type="text" placeholder="Driver's Licence No.">
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="material-icons">filter_4</i></span>
+                                        </div>
+                                        <input id="RoadWorthinessN0" type="text" placeholder="Road Worthiness No">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="material-icons">filter_5</i></span>
+                                        </div>
+                                        <input id="BVN" type="text" placeholder="Bank verification No">
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="material-icons">filter_6</i></span>
+                                        </div>
+                                        <input id="PlateNo" type="text" placeholder="Plate Number">
+                                    </div>
+
+                                </div>
+                                <div class="row mx-0 justify-content-end no-gutters">
+                                    <div class="col-6">
+                                        <a href="verification.html" class="btn btn-block gradient border-0 z-3">Update</a>
+                                    </div>
+                                </div>
+                                <div id="err" style="color: red;" class="text-center"></div>
+                            </div>
+                        </div>
+                        <!-- tabs content end here -->
+                    </div>
+                </div>
+              
+                <br>
+
+            </div>
+           
+        </div>
+        <!-- Update Page Ends -->
 
         <!-- sidebar right start -->
         <div class="sidebar sidebar-right">
