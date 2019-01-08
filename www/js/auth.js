@@ -169,9 +169,9 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             case "main-page":
                 $(".fullname").text(params.fullname);
                 $("#id").text(params.id);
-                $("#vehicleName").text(params.vehicleName);
-                $("#vehicleModel").text(params.vehicleModel);
-                $("#vehicleType").text(params.vehicleType);
+                $("#tellVehicleName").text(params.vehicleName);
+                // $("#vehicleModel").text(params.vehicleModel);
+                $("#tellVehicleType").text(params.vehicleType);
                 $("#numberPlate").text(params.numberPlate);
                 $("#regNumber").text(params.regNumber);
                 $("#completedJobs").text(params.completedJobs);

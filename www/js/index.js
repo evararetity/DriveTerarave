@@ -18,22 +18,44 @@ var app = {
         app.receivedEvent('deviceready');
 
         var notificationOpenedCallback = function(jsonData) {
-            // alert("Notification opened:\n" + JSON.stringify(jsonData))
-            $("#notif-text").text(jsonData.notification.payload.body)
-            $("#notif-ID").text(jsonData.notification.payload.additionalData.transactionID)
-            $("#job-alert-modal").modal('show');
-            $("#BusName").text(jsonData.notification.payload.additionalData.BusName)
-            $("#fitsIn").text(jsonData.notification.payload.additionalData.fitsIn)
-            $("#BusAdd").text(jsonData.notification.payload.additionalData.BusAdd)
-            $("#BusPhone").text(jsonData.notification.payload.additionalData.BusPhone)
-            // $("#hidden-eta").text(jsonData.notification.payload.additionalData.hidden-eta)
-            $("#custPhone").text(jsonData.notification.payload.additionalData.custPhone)
-            // $("#custName").text(jsonData.notification.payload.additionalData.custName)
-            $("#full-dest").text(jsonData.notification.payload.additionalData.Dest)
-            $("#transaction-price").text(jsonData.notification.payload.additionalData.transactionPrice)
-            $("#destLng").text(jsonData.notification.payload.additionalData.destLng)
-            $("#destLat").text(jsonData.notification.payload.additionalData.destLat)
 
+            $.ajax({
+                type: "post",
+                url: "https://teraraveweb.herokuapp.com/mobile/notifPicked",
+                headers: {
+                    "x-access-token": localStorage.getItem("token")
+                },
+                data: {
+                    ID: jsonData.notification.payload.additionalData.transactionID,
+                },
+                success: function(data) {
+                    if (data.status == false) {
+        
+                        $("#notif-text").text("This Job notification had already been picked by another driver. Kindly wait for another")
+                        $("#notif-ID").text("No-Job")
+                        $("#driverInitButton").hide();
+                        $("#job-alert-modal").modal('show');
+        
+                    } else if (data.status == true) {
+                        
+                        $("#notif-text").text(jsonData.notification.payload.body)
+                        $("#notif-ID").text(jsonData.notification.payload.additionalData.transactionID)
+                        $("#driverInitButton").show(1000);
+                        $("#job-alert-modal").modal('show');
+                        $("#BusName").text(jsonData.notification.payload.additionalData.BusName)
+                        $("#fitsIn").text(jsonData.notification.payload.additionalData.fitsIn)
+                        $("#BusAdd").text(jsonData.notification.payload.additionalData.BusAdd)
+                        $("#BusPhone").text(jsonData.notification.payload.additionalData.BusPhone)
+                        // $("#hidden-eta").text(jsonData.notification.payload.additionalData.hidden-eta)
+                        $("#custPhone").text(jsonData.notification.payload.additionalData.custPhone)
+                        // $("#custName").text(jsonData.notification.payload.additionalData.custName)
+                        $("#full-dest").text(jsonData.notification.payload.additionalData.Dest)
+                        $("#transaction-price").text(jsonData.notification.payload.additionalData.transactionPrice)
+                        $("#destLng").text(jsonData.notification.payload.additionalData.destLng)
+                        $("#destLat").text(jsonData.notification.payload.additionalData.destLat)
+                    }
+                }
+            })
         };
 
         // .getPermissionSubscriptionState(function(status) {

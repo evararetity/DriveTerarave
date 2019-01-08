@@ -129,7 +129,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="material-icons">filter_1</i></span>
                                         </div>
-                                        <input type="text" id="vehicleName" placeholder="Vehicle Name">
+                                        <input type="text" id="vehicleName" placeholder="Vehicle Name & Model">
                                     </div>
 
                                     <div class="input-group">
@@ -217,7 +217,7 @@
 											
 										</h5>
                                         <div class="mb-0">
-                                            You drive a <span id="vehicleName"> Nissan </span> <span id="vehicleType"> Truck </span> with the Plate Number <span id="numberPlate"> XYJ-987-TR </span>
+                                            You drive a <span id="tellVehicleName"> Nissan </span> <span id="tellVehicleType"> Truck </span> with the Plate Number <span id="numberPlate"> XYJ-987-TR </span>
                                             <br />
                                             <span id="activeness"></span>
                                         </div>
@@ -381,7 +381,7 @@
 
                                 <p class="lead" id="notif-text"></p>
                                 <hr class="my-4">
-                                <button type="button" onclick="driverInit()" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Accept Offer</button>
+                                <button type="button" onclick="driverInit()" id="driverInitButton" style="display: none;" class="z2 mr-2 btn btn-light text-dark rounded mb-2">Accept Offer</button>
                                 <ul style="display: none;">
                                     <li id="fitsIn"></li>
                                     <li id="BusName"></li>
