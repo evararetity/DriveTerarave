@@ -53,10 +53,10 @@ $(document).ready(function () {
 
     if(localStorage.getItem("theme-color") == "color-theme-gray"){
         $('body').addClass("color-theme-gray");
-        $("#activeness").text("You are currently busy and inactive here, You will not recieve any job notification until you click the I'm Ready button on your dashboard to activate your activeness");
+        $("#activeness").text("You're now inactive and won't receive delivery notifications, Click on I'm ready on your dashboard to receive notifications");
     }else if(localStorage.getItem("theme-color") == "color-theme-yellow"){
         $('body').addClass("color-theme-yellow");
-        $("#activeness").text("You are currently active and will always receive job offer notifications. You can click the I'm busy button on your dashboard to activate your inactiveness");
+        $("#activeness").text("You are currently active and will always receive delivery offer notifications. Click on 'I'm busy' if you don't want to receive delivery notifications.");
     }
 
     $('.theme-color .gray').on('click', function () {

@@ -63,6 +63,7 @@ function authDriver(){
 }
 
 function updateDriver(){
+    $.mobile.loading("show");
     $.ajax({
         type: "post",
         url: "https://teraraveweb.herokuapp.com/mobile/updateDriver",
