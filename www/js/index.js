@@ -323,7 +323,16 @@ function jobProgress(status){
         })
 
     }else if(status == "finish"){
-        $.mobile.navigate("#main-page");
+        $("#job-instruction5").hide()
+        $("#job-instruction1").text('You are encouraged to reach the Pickup Location in 15mins. You can either call the phone number below for info about the Pickup Location or click the "Arrived" button upon arrival for the next stage')
+        $("#job-header").text("Going to pickup Location");
+        $("#job-stage-no").text("1")
+        $("#job-button").text("Finish").attr("onclick", "jobProgress('arrived')")
+        $("#job-progress").css('width', '20%').text("20%")
+        $("#job-instruction1").fadeIn(1000)
+        setTimeout(function(){
+            $.mobile.navigate("#main-page");
+        }, 2000)
     }
 }
 

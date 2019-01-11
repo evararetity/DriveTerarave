@@ -190,9 +190,11 @@ var id = localStorage.getItem("id")
 var pnChannel = "channel" + id;
 
 var pubnub = new PubNub({
-    publishKey:   'pub-c-85ef4a91-eeed-402e-8435-abf39153644d',
-    subscribeKey: 'sub-c-e60ecfd2-69c4-11e8-9499-26ede0a09d22',
-    ssl: true
+    publishKey: "pub-c-3378cef2-1c01-416d-a988-94f8f9000322",
+    subscribeKey: "sub-c-3eff2ea8-15b8-11e9-923b-9ef472141036"
+    // publishKey:   'pub-c-85ef4a91-eeed-402e-8435-abf39153644d',
+    // subscribeKey: 'sub-c-e60ecfd2-69c4-11e8-9499-26ede0a09d22',
+    // ssl: true
 });
 
 function initPubNub(){
